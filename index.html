@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>C++ Level Editor</title>
+	</head>
+	<body>
+	    <input id="tileset" type="file" /><br />
+		<canvas id="cvs" width="640" height="480" style="border:1px solid #000;"></canvas><br />
+		<script>
+var screens = new Array(24*24);
+
+var cvs = document.getElementById("cvs");
+var ctx = cvs.getContext("2d");
+
+var e = "e"
+
+var checker = [0,1,0,1,e,1,0,1,0,e,0,1,0,1,e,1,0,1,0];
+
+function drawChecker(x, y)
+{
+    var posx = x;
+    var posy = y;
+    var colors = ["#ffffff", "#dddddd"];
+    for(var i = 0; i < checker.length; i++)
+    {
+        if(checker[i] != e)
+        {
+            ctx.fillStyle = colors[checker[i]];
+            ctx.fillRect(posx, posy, 8, 8);
+            posx += 8;
+        }
+        else
+        {
+            posy += 8;
+            posx = x;
+        }
+    }
+}
+function drawCheckerBackground()
+{
+    for(var i = 0; i < (480 / 32); i++)
+    {
+        for(var j = 0; j < (640 / 32); j++)
+        {
+            drawChecker((j * 32), (i * 32));
+        }
+    }
+}
+function drawGrid() {
+    ctx.fillStyle = "#00ffff";
+    
+    for(var i = 0; i < (640 / 32); i++)
+    {
+        if(i > 0)ctx.fillRect((i * 32) - 1, 0, 2, 480);
+    }
+    for(var i = 0; i < (480 / 32); i++)
+    {
+        if(i > 0)ctx.fillRect(0, (i * 32)- 1, 640, 2);
+    }
+}
+var mouseX;
+var mouseY;
+window.onmousemove = function(ev)
+{
+    mouseX = ev.x;
+    mouseY = ev.y;
+}
+function drawMousePosRect()
+{
+    ctx.fillStyle = "rgba(127, 127, 127, 0.35)";
+    ctx.fillRect((Math.ceil(mouseX/32)*32)-32, (Math.ceil(mouseY/32)*32)-64, 32, 32);
+}
+var anim = function()
+{
+    requestAnimationFrame(anim);
+    drawCheckerBackground();
+    drawMousePosRect();
+    drawGrid();
+}
+anim();
+		</script>
+	</body>
+</html>
