@@ -60,29 +60,10 @@ function drawGrid() {
 }
 var mouseX;
 var mouseY;
-var drawing;
-window.onmousedown = function()
-{
-	drawing = true;
-}
-window.onmouseup = function()
-{
-	drawing = false;
-}
-window.onmousemove = function(ev)
-{
-    mouseX = ev.x;
-    mouseY = ev.y;
-	if(drawing == true)
-	{
-		ctx.fillStyle = "#000";
-		ctx.fillRect(mouseX - 5, mouseY - 5, 10, 10);
-	}
-}
 function drawMousePosRect()
 {
     ctx.fillStyle = "rgba(127, 127, 127, 0.35)";
-    ctx.fillRect((Math.ceil(mouseX/32)*32)-32, (Math.ceil(mouseY/32)*32)-64, 32, 32);
+    ctx.fillRect((Math.ceil(mouseX/32)*32)-32+8, (Math.ceil(mouseY/32)*32)-64+8, 32, 32);
 }
 var anim = function()
 {
