@@ -88,6 +88,16 @@ var anim = function()
 {
     requestAnimationFrame(anim);
     drawCheckerBackground();
+	window.onmousemove = function(ev)
+	{
+		mouseX = ev.x;
+		mouseY = ev.y;
+		if(drawing)
+		{
+			ctx.fillStyle = "#000000";
+			ctx.fillRect(ev.x, ev.y, 10, 10);
+		}
+	}
     drawMousePosRect();
     drawGrid();
 }
