@@ -63,7 +63,7 @@ var mouseY;
 function drawMousePosRect()
 {
     ctx.fillStyle = "rgba(127, 127, 127, 0.35)";
-    ctx.fillRect((Math.ceil(mouseX/32)*32)-32+8, (Math.ceil(mouseY/32)*32)-64+8, 32, 32);
+    ctx.fillRect(((Math.ceil(mouseX/32)*32)-32)+8, ((Math.ceil(mouseY/32)*32)-64)+8, 32, 32);
 }
 var anim = function()
 {
