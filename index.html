@@ -89,8 +89,9 @@ drawGrid();
 var anim = function()
 {
     requestAnimationFrame(anim);
+    drawChackerBackground();
     drawMousePosRect();
-}
+	
 window.onmousemove = function(ev)
 {
 	mouseX = ev.x;
