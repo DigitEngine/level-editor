@@ -15,7 +15,7 @@ var ctx = cvs.getContext("2d");
 var e = "e"
 
 var checker = [0,1,0,1,e,1,0,1,0,e,0,1,0,1,e,1,0,1,0];
-
+			
 function drawChecker(x, y)
 {
     var posx = x;
@@ -60,15 +60,29 @@ function drawGrid() {
 }
 var mouseX;
 var mouseY;
+var drawing = false;
+window.onmousedown = function()
+{
+	drawing = true;
+}
+window.onmouseup = function()
+{
+	drawing = false;
+}
 window.onmousemove = function(ev)
 {
 	mouseX = ev.x;
 	mouseY = ev.y;
+	if(drawing)
+	{
+		ctx.fillStyle = "#000000";
+		ctx.fillRect(ev.x, ev.y, 10, 10);
+	}
 }
 function drawMousePosRect()
 {
     ctx.fillStyle = "rgba(127, 127, 127, 0.35)";
-    ctx.fillRect(((Math.ceil(mouseX+8/32)*32)-32, ((Math.ceil(mouseY/32)*32)-64, 32, 32);
+    ctx.fillRect(((Math.ceil(mouseX/32)*32)-32, ((Math.ceil(mouseY/32)*32)-64, 32, 32);
 }
 var anim = function()
 {
