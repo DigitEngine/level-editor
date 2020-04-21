@@ -60,6 +60,11 @@ function drawGrid() {
 }
 var mouseX;
 var mouseY;
+window.onmousemove = function(ev)
+{
+	mouseX = ev.x;
+	mouseY = ev.y;
+}
 function drawMousePosRect()
 {
     ctx.fillStyle = "rgba(127, 127, 127, 0.35)";
