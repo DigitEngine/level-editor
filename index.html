@@ -94,12 +94,12 @@ window.onmouseup = function()
 function drawMousePosRect()
 {
     ctx.fillStyle = "rgba(127, 127, 127, 0.35)";
-    ctx.fillRect((Math.ceil(mouseX/32)*32), (Math.ceil(mouseY/32)*32), 32, 32);
+    ctx.fillRect((Math.ceil(mouseX/32)*32)-32, (Math.ceil(mouseY/32)*32)-32, 32, 32);
 }
 function draw()
 {
-	var mouseDrawX = ((Math.ceil(mouseX/32)*32)/32);
-	var mouseDrawY = ((Math.ceil(mouseY/32)*32)/32)*21;
+	var mouseDrawX = ((Math.ceil(mouseX/32)*32)/32)-32;
+	var mouseDrawY = (((Math.ceil(mouseY/32)*32)/32)-32)*21;
 	var posArray = mouseDrawX + mouseDrawY;
 	if(drawing)
 	{
