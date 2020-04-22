@@ -13,7 +13,7 @@ var cvs = document.getElementById("cvs");
 var ctx = cvs.getContext("2d");
 
 var screen = [
-	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	[0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -101,7 +101,7 @@ function draw()
 {
 	if(drawing)
 	{
-		screen[((Math.ceil(mouseX/32)*32)-32)/32][((Math.ceil(mouseY/32)*32)-64)/32] = 1;
+		screen[((Math.ceil(mouseY/32)*32)-32)/32][((Math.ceil(mouseX/32)*32)-64)/32] = 1;
 	}
 }
 function drawScreen()
