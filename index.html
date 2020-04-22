@@ -104,7 +104,7 @@ function drawScreen()
 	var colors = ["transparent", "#000000"];
 	for(var i = 0; i < screen.length; i++)
 	{
-		if(x < (20 * 32))
+		if(screen[i] != e)
 		{
 			ctx.fillStyle = colors[screen[i]];
 			ctx.fillRect(x, y, 32, 32);
