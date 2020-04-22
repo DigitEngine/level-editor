@@ -133,7 +133,6 @@ var anim = function()
     drawCheckerBackground();
 	drawScreen();
 	draw();
-	if(!(mouseX > pos || mouseX < (pos + cvs.width)) || !(mouseY > pos && mouseX < (pos + cvs.width)))drawing = false;
     drawMousePosRect();
 	drawGrid();
 }
