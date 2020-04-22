@@ -15,7 +15,7 @@ var ctx = cvs.getContext("2d");
 var e = "e";
 	
 var screen = [
-	0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,e,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,e,
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,e,
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,e,
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,e,
@@ -101,7 +101,7 @@ function draw()
 {
 	var mouseDrawX = ((Math.ceil(mouseX/32)*32)-32);
 	var mouseDrawY = ((Math.ceil(mouseY/32)*32)-64);
-	var posArray = mouseDrawX + mouseDrawY;
+	var posArray = mouseDrawX;
 	if(drawing)
 	{
 		screen[posArray] = 1;
