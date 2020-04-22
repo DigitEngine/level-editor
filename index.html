@@ -96,6 +96,30 @@ function drawMousePosRect()
     ctx.fillStyle = "rgba(127, 127, 127, 0.35)";
     ctx.fillRect((Math.ceil(mouseX/32)*32)-32, (Math.ceil(mouseY/32)*32)-32, 32, 32);
 }
+var currentTile = 1;	
+window.addEventListener('keydown', function(ev)
+{
+	var keyPressed = ev.key;
+	var keyCode = ev.keyCode;
+	if(keyCode == 48 || keyCode == 49 || keyCode == 96 || keyCode == 97)
+	{
+		switch(keyPressed.toLowerCase())
+		{
+			case '0':
+				currentTile = 0;
+				break;
+			case 'numpad 0':
+				currentTile = 0;
+				break;
+			case '1':
+				currentTile = 1;
+				break;
+			case 'numpad 1':
+				currentTile = 1;
+				break;
+		}
+	}
+});
 function draw()
 {
 	var mouseDrawX = (((Math.ceil(mouseX/32)*32)-32)/32);
@@ -105,7 +129,7 @@ function draw()
 	{
 		if(drawing)
 		{
-			screen[posArray] = 1;
+			screen[posArray] = currentTile;
 		}
 	}
 }
