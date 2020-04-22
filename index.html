@@ -97,13 +97,6 @@ function drawMousePosRect()
     ctx.fillStyle = "rgba(127, 127, 127, 0.35)";
     ctx.fillRect(((Math.ceil(mouseX/32)*32)-32), ((Math.ceil(mouseY/32)*32)-64), 32, 32);
 }
-function draw()
-{
-	if(drawing)
-	{
-		
-	}
-}
 function drawScreen()
 {
 	var x = 0;
@@ -111,7 +104,7 @@ function drawScreen()
 	var colors = ["transparent", "#000000"];
 	for(var i = 0; i < screen.length; i++)
 	{
-		if(x < 20 * 32)
+		if(x < (20 * 32))
 		{
 			ctx.fillStyle = colors[screen[i]];
 			ctx.fillRect(x, y, 32, 32);
