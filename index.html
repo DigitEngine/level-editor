@@ -101,9 +101,12 @@ function draw()
 	var mouseDrawX = (((Math.ceil(mouseX/32)*32)-32)/32);
 	var mouseDrawY = (((Math.ceil(mouseY/32)*32)-32)/32)*21;
 	var posArray = mouseDrawX + mouseDrawY;
-	if(drawing)
+	if(mouseX < 642 && mouseY < 482)
 	{
-		screen[posArray] = 1;
+		if(drawing)
+		{
+			screen[posArray] = 1;
+		}
 	}
 }
 function drawScreen()
