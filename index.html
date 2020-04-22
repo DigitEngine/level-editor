@@ -113,11 +113,11 @@ function drawScreen()
 	{
 		for(var j = 0; j < 20; j++)
 		{
-			ctx.fillStyle = colors[j];
+			ctx.fillStyle = colors[i[j]];
 			ctx.fillRect(x, y, 32, 32);
-			x++;
+			x+=32;
 		}
-		y++;
+		y+=32;
 	}
 }
 var anim = function()
