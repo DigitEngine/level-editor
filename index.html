@@ -4,7 +4,6 @@
 		<title>C++ Level Editor</title>
 	</head>
 	<body>
-		<input id="tileset" type="file" /><br />
 		<canvas id="cvs" width="640" height="480" style="border:1px solid #000;"></canvas><br />
 		<script>
 var screens = new Array(24*24);
@@ -79,18 +78,19 @@ function drawGrid() {
 var mouseX;
 var mouseY;
 var drawing = false;
-window.onmousedown = function()
-{
-	drawing = true;
-}
-window.onmouseup = function()
-{
-	drawing = false;
-}
+var pos = document.getElementsByTagName("body")[0].style.margin;
 window.onmousemove = function(ev)
 {
 	mouseX = ev.x;
 	mouseY = ev.y;
+}
+window.onmousedown = function()
+{
+	if((mouseX > pos && mouseX < (pos + cvs.width)) && (mouseY > pos && mouseX < (pos + cvs.width)))drawing = true;
+}
+window.onmouseup = function()
+{
+	drawing = false;
 }
 function drawMousePosRect()
 {
@@ -133,6 +133,7 @@ var anim = function()
     drawCheckerBackground();
 	drawScreen();
 	draw();
+	if(!(mouseX > pos || mouseX < (pos + cvs.width)) || !(mouseY > pos && mouseX < (pos + cvs.width)))drawing = false;
     drawMousePosRect();
 	drawGrid();
 }
