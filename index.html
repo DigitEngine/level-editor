@@ -42,7 +42,6 @@ function drawChecker(x, y)
     {
         if(checker[i] != e)
         {
-		ctx.shadowBlur = 0;
             ctx.fillStyle = colors[checker[i]];
             ctx.fillRect(posx, posy, 8, 8);
             posx += 8;
@@ -65,7 +64,6 @@ function drawCheckerBackground()
     }
 }
 function drawGrid() {
-	ctx.shadowBlur = 0;
     ctx.fillStyle = "#00ffff";
     
     for(var i = 0; i < (640 / 32); i++)
@@ -95,7 +93,6 @@ window.onmouseup = function()
 }
 function drawMousePosRect()
 {
-	ctx.shadowBlur = 0;
     ctx.fillStyle = "rgba(127, 127, 127, 0.35)";
     ctx.fillRect((Math.ceil(mouseX/32)*32)-32, (Math.ceil(mouseY/32)*32)-32, 32, 32);
 }
@@ -145,7 +142,6 @@ function drawScreen()
 	{
 		if(screen[i] != e)
 		{
-			ctx.shadowBlur = 0;
 			ctx.fillStyle = colors[screen[i]];
 			ctx.fillRect(x, y, 32, 32);
 			x += 32;
@@ -171,7 +167,7 @@ function drawMode()
 	}
 	ctx.shadowOffsetX = 0;
 	ctx.shadowOffsetY = 0;
-	ctx.shadowBlur = 4;
+	ctx.shadowBlur = 0;
 	ctx.shadowColor = "#000";
 	ctx.font = "24px Monospace";
 	ctx.textBaseline = "alphabetical baseline";
