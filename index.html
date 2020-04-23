@@ -42,6 +42,7 @@ function drawChecker(x, y)
     {
         if(checker[i] != e)
         {
+		ctx.shadowBlur = 0;
             ctx.fillStyle = colors[checker[i]];
             ctx.fillRect(posx, posy, 8, 8);
             posx += 8;
