@@ -153,6 +153,25 @@ function drawScreen()
 		}
 	}
 }
+function drawMode()
+{
+	var text;
+	switch(currentTile)
+	{
+		case 0:
+			text = "Erase Mode";
+			break;
+		case 1:
+			text = "Draw Mode";
+			break;
+	}
+	ctx.shadowOffsetX = 0;
+	ctx.shadowOffsetY = 0;
+	ctx.shadowBlur = 4;
+	ctx.font = "24px Monospace";
+	ctx.textBaseline = "alphabetical baseline";
+	ctx.fillStyle = "#fff";
+}
 var anim = function()
 {
     requestAnimationFrame(anim);
@@ -161,6 +180,7 @@ var anim = function()
 	draw();
     drawMousePosRect();
 	drawGrid();
+	drawMode();
 }
 anim();
 		</script>
