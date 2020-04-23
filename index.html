@@ -95,6 +95,7 @@ window.onmouseup = function()
 }
 function drawMousePosRect()
 {
+	ctx.shadowBlur = 0;
     ctx.fillStyle = "rgba(127, 127, 127, 0.35)";
     ctx.fillRect((Math.ceil(mouseX/32)*32)-32, (Math.ceil(mouseY/32)*32)-32, 32, 32);
 }
@@ -144,6 +145,7 @@ function drawScreen()
 	{
 		if(screen[i] != e)
 		{
+			ctx.shadowBlur = 0;
 			ctx.fillStyle = colors[screen[i]];
 			ctx.fillRect(x, y, 32, 32);
 			x += 32;
