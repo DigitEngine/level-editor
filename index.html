@@ -96,12 +96,37 @@ function drawMousePosRect()
     ctx.fillStyle = "rgba(127, 127, 127, 0.35)";
     ctx.fillRect((Math.ceil(mouseX/32)*32)-32, (Math.ceil(mouseY/32)*32)-32, 32, 32);
 }
-var currentTile = 1;	
+function clearScreen()
+{
+	if(confirm("Are you sure you want to clear this screen?"))
+	{
+		screen = [
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,e,
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,e,
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,e,
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,e,
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,e,
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,e,
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,e,
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,e,
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,e,
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,e,
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,e,
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,e,
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,e,
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,e,
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+		];
+	}
+}
+var currentTile = 1;
+var ctrlPressed = false;
 window.addEventListener('keydown', function(ev)
 {
 	var keyPressed = ev.key;
 	var keyCode = ev.keyCode;
-	if(keyCode == 48 || keyCode == 49 || keyCode == 96 || keyCode == 97)
+	if(keyCode == 48 || keyCode == 49 || keyCode == 96 || keyCode == 97 ||
+	  keyCode == 17 || keyCode == 67)
 	{
 		switch(keyPressed.toLowerCase())
 		{
@@ -117,8 +142,17 @@ window.addEventListener('keydown', function(ev)
 			case 'numpad 1':
 				currentTile = 1;
 				break;
+			case 'ctrl':
+				ctrlPressed = true;
+				break;
+			case 'c':
+				if(ctrlPressed)clearScreen();
 		}
 	}
+});
+window.addEventListener('keyup', function(ev)
+{
+	if(ev.keyCode == 17)ctrlPressed = false;
 });
 function draw()
 {
