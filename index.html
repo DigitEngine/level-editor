@@ -5,6 +5,8 @@
 	</head>
 	<body style="margin:0px;">
 		<canvas id="cvs" width="640" height="480" style="border:1px solid #000;"></canvas><br />
+		<input id="name" type="text" value="" />
+		<button onclick="downloadScreen();">Download Test Screen</button>
 		<script>
 var screens = new Array(24*24);
 
@@ -203,6 +205,30 @@ function drawMode()
 	ctx.textBaseline = "alphabetical baseline";
 	ctx.fillStyle = "#00f";
 	ctx.fillText(text, 5, 475);
+}
+function download(filename, code)
+{
+	var a = document.createElement("a");
+	a.setAttribute("href", "data:text/plain;charset=UTF-8" + encodeURIComponent(code));
+	a.setAttribute("download", filename);
+	
+	a.style.display = "none";
+	document.body.appendChild(a);
+	
+	a.click();
+	
+	document.body.removeChild(a);
+}
+function downloadScreen()
+{
+	var arrayContents;
+	for(var i = 0; i < screen.length; i++)
+	{
+		if(screen[i] != e)arrayContents += screen[i] + ",";
+		else continue;
+	}
+	var array = "int screen[20*15] = { " + arrayContents + " };";
+	download(document.getElementById("name").value + ".cpp", array);
 }
 var anim = function()
 {
