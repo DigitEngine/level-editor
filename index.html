@@ -127,7 +127,7 @@ window.addEventListener('keydown', function(ev)
 {
 	var keyPressed = ev.key;
 	var keyCode = ev.keyCode;
-	if(keyCode == 48 || keyCode == 49 || keyCode == 50 || keyCode == 51 || keyCode == 52 || keyCode == 53 || keyCode == 54 || keyCode == 55 ||
+	if(keyCode == 48 || keyCode == 49 || keyCode == 50 || keyCode == 51 || keyCode == 52 || keyCode == 53 || keyCode == 54 ||
 	  keyCode == 17 || keyCode == 67)
 	{
 		switch(keyPressed.toLowerCase())
@@ -135,20 +135,26 @@ window.addEventListener('keydown', function(ev)
 			case '0':
 				currentTile = 0;
 				break;
-			case 'numpad 0':
-				currentTile = 0;
-				break;
 			case '1':
 				currentTile = 1;
 				break;
-			case 'numpad 1':
-				currentTile = 1;
+			case '2':
+				currentTile = 2;
 				break;
-			case 'ctrl':
-				ctrlPressed = true;
+			case '3':
+				currentTile = 3;
 				break;
-			case 'c':
-				if(ctrlPressed)clearScreen();
+			case '4':
+				currentTile = 4;
+				break;
+			case '5':
+				currentTile = 5;
+				break;
+			case '6':
+				currentTile = 6;
+				break;
+			case '7':
+				currentTile = 7;
 				break;
 		}
 	}
@@ -174,7 +180,7 @@ function drawScreen()
 {
 	var x = 0;
 	var y = 0;
-	var colors = ["transparent", "#000000", "#ff0000", "#ffff00", "#00ff00", "#00ffff", "#0000ff", "#ffffff"];
+	var colors = ["transparent", "#000000", "#ff0000", "#ffff00", "#00ff00", "#00ffff", "#0000ff"];
 	for(var i = 0; i < screen.length; i++)
 	{
 		if(screen[i] != e)
