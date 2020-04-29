@@ -227,7 +227,8 @@ function downloadScreen()
 		if(screen[i] != e)arrayContents += screen[i] + ",";
 		else continue;
 	}
-	var array = "int screen[20*15] = { " + arrayContents + " };";
+	var arrayWU = arrayContents.substring(9, arrayContents.split('').length);
+	var array = "int screen[20*15] = { " + arrayWU + " };";
 	download(document.getElementById("name").value + ".txt", array);
 }
 var anim = function()
