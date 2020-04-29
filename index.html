@@ -6,7 +6,7 @@
 	<body style="margin:0px;">
 		<canvas id="cvs" width="640" height="480" style="border:1px solid #000;"></canvas><br />
 		<input id="name" type="text" value="" />
-		<button onclick="downloadScreen();">Download Test Screen</button>
+		<button onclick="download('test.txt', 'this is a test');">Download Test Screen</button>
 		<script>
 var screens = new Array(24*24);
 
@@ -218,17 +218,6 @@ function download(filename, code)
 	a.click();
 	
 	document.body.removeChild(a);
-}
-function downloadScreen()
-{
-	var arrayContents;
-	for(var i = 0; i < screen.length; i++)
-	{
-		if(screen[i] != e)arrayContents += screen[i] + ",";
-		else continue;
-	}
-	var array = "int screen[20*15] = { " + arrayContents + " };";
-	download(document.getElementById("name").value + ".txt", array);
 }
 var anim = function()
 {
