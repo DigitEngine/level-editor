@@ -127,7 +127,7 @@ window.addEventListener('keydown', function(ev)
 {
 	var keyPressed = ev.key;
 	var keyCode = ev.keyCode;
-	if(keyCode == 48 || keyCode == 49 || keyCode == 96 || keyCode == 97 ||
+	if(keyCode == 48 || keyCode == 49 || keyCode == 50 || keyCode == 51 || keyCode == 52 || keyCode == 53 || keyCode == 54 || keyCode == 55 ||
 	  keyCode == 17 || keyCode == 67)
 	{
 		switch(keyPressed.toLowerCase())
@@ -149,6 +149,7 @@ window.addEventListener('keydown', function(ev)
 				break;
 			case 'c':
 				if(ctrlPressed)clearScreen();
+				break;
 		}
 	}
 });
@@ -173,7 +174,7 @@ function drawScreen()
 {
 	var x = 0;
 	var y = 0;
-	var colors = ["transparent", "#000000"];
+	var colors = ["transparent", "#000000", "#ff0000", "#ffff00", "#00ff00", "#00ffff", "#0000ff", #ffffff"];
 	for(var i = 0; i < screen.length; i++)
 	{
 		if(screen[i] != e)
