@@ -5,6 +5,7 @@
 	</head>
 	<body style="margin:0px;">
 		<canvas id="cvs" width="640" height="480" style="border:1px solid #000;"></canvas><br />
+		<canvas id="picker" width="640" height="480" style="border:1px solid #000;"></canvas><br />
 		<input id="name" type="text" value="" />
 		<button onclick="downloadScreen();">Download Test Screen</button>
 		<script>
@@ -142,15 +143,43 @@ window.addEventListener('keyup', function(ev)
 {
 	if(ev.keyCode == 17)ctrlPressed = false;
 });
-var x = 0;
-var y = 0;
-var currentScreen = (x + (y *20));
+var sx = 0;
+var sy = 0;
+var currentScreen = (sx + (sy * 20));
+
+var picker = document.getElementById("picker");
+var ptx = picker.getContext("2d");
+
+function drawMousePosRect_Pick()
+{
+	ptx.fillStyle = "rgba(127, 127, 127, 0.35)";
+	ptx.fillRect((Math.ceil((mouseX - 642)/32)*32)-32, (Math.ceil(mouseY/32)*32)-32, 32, 32);
+}
+function drawTileset_Pick()
+{
+	ptx.drawImage("./tilesets/monastery_00.png", 0, 0);
+}
+var pickerX = 0;
+var pickerY = 0;
+function setPickerPosition_Pick()
+{
+	if(drawing)
+	{
+		pickerX = (Math.ceil((mouseX - 642)/32)*32)-32;
+		pickerY = (Math.ceil(mouseY/32)*32)-32;
+	}
+}
+function drawPicker_Pick()
+{
+	ptx.strokeStyle = "#00ffff";
+	ptx.strokeRect(pickerX, pickerY, 31, 31);
+}
 function draw()
 {
 	var mouseDrawX = (((Math.ceil(mouseX/32)*32)-32)/32);
 	var mouseDrawY = (((Math.ceil(mouseY/32)*32)-32)/32)*21;
 	var posArray = mouseDrawX + mouseDrawY;
-	if(mouseX > 1 && mouseY > 1 && mouseX < 642 && mouseY < 482)
+	if(mouseX > 1 && mouseY > 1 && mouseX < 641 && mouseY < 481)
 	{
 		if(drawing)
 		{
@@ -230,6 +259,8 @@ var anim = function()
     drawMousePosRect();
 	drawGrid();
 	drawMode();
+	drawTileset_Pick();
+	drawPicker_Pick();
 }
 anim();
 		</script>
