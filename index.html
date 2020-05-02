@@ -158,8 +158,11 @@ function drawMousePosRect_Pick()
 function drawTileset_Pick()
 {
 	var tileset = document.createElement("image");
+	tileset.setAttribute("id", "tileset");
 	tileset.setAttribute("src","./tilesets/monastery_00.png");
-	ptx.drawImage(tileset, 0, 0);
+	tileset.style.display = "none";
+	document.body.appendChild(tileset);
+	ptx.drawImage(document.getElementById("tileset"), 0, 0);
 }
 var pickerX = 0;
 var pickerY = 0;
