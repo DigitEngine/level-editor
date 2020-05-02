@@ -145,7 +145,11 @@ var currentScreen = (sx + (sy * 20));
 
 var picker = document.getElementById("picker");
 var ptx = picker.getContext("2d");
-
+function clearScreen_Pick()
+{
+	ptx.fillStyle = "#ffffff";
+	ptx.fillRect(0, 0, 640, 480);
+}
 function drawMousePosRect_Pick()
 {
 	ptx.fillStyle = "rgba(127, 127, 127, 0.35)";
