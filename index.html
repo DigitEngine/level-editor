@@ -182,7 +182,7 @@ function setPickerPosition_Pick()
 			pickerY = (Math.ceil(mouseY/32)*32)-32;
 		}
 	}
-	currentTile = pickerX + (pickerY * 20);
+	currentTile = (pickerX / 32) + ((pickerY / 32) * 20);
 }
 function drawPicker_Pick()
 {
