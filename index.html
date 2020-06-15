@@ -8,6 +8,9 @@
 		<canvas id="picker" width="640" height="480" style="border:1px solid #000;"></canvas><br />
 		<input id="name" type="text" value="" />
 		<button onclick="downloadScreen();">Download Test Screen</button>
+		<button onclick="downloadProject();">Download Project</button><br />
+		<input id="proj" type="file" />
+		<button onclick="uploadProject();">Upload Project</button>
 		<script>
 var screens = new Array(24*24);
 
@@ -1156,6 +1159,17 @@ function download(filename, code)
 	
 	document.body.removeChild(a);
 }
+function open(fileForUpload)
+{
+    var file = fileForUpload.files[0];
+    if (file) {
+        var reader = new FileReader();
+        reader.readAsText(file, "UTF-8");
+        reader.onload = function (evt) {
+            return evt.target.result;
+        }
+    }
+}
 function downloadScreen()
 {
 	var arrayContents;
@@ -1165,8 +1179,28 @@ function downloadScreen()
 		else continue;
 	}
 	var arrayWU = arrayContents.substring(9, arrayContents.split('').length);
-	var array = "int screen[20*15] = { " + arrayWU + " };";
+	var array = "int " + document.getElementById("name").value + "[20*15] = { " + arrayWU + " };";
 	download(document.getElementById("name").value + ".h", array);
+}
+function downloadProject()
+{
+	var data;
+	for(var i = 0; i < screen.length; i++)
+	{
+		if(screen[i] != e)data += screen[i] + ",";
+		else continue;
+	}
+	download(document.getElementById("name").value + ".prj", data);
+}
+function uploadProject()
+{
+	var file = open(document.getElementById("proj").value);
+	var fileContent = file.split();
+	for(var i = 0; i < fileContent.length; i++)
+	{
+		if(fileContent[i] != ',')screen[i] = fileContent[i];
+		else continue;
+	}
 }
 var anim = function()
 {
