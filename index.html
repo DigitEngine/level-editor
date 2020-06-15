@@ -1195,7 +1195,7 @@ function downloadProject()
 function uploadProject()
 {
 	var file = '';
-	open(document.getElementById("proj").value, file);
+	open(document.getElementById("proj"), file);
 	var fileContent = file.split();
 	for(var i = 0; i < fileContent.length; i++)
 	{
