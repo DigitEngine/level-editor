@@ -10,7 +10,7 @@
 		<button onclick="downloadScreen();">Download Test Screen</button>
 		<button onclick="downloadProject();">Download Project</button><br />
 		<input id="proj" type="file" />
-		<button onclick="uploadProject();">Upload Project</button><br />
+		<button onclick="open(document.getElementById("proj"), screen);">Upload Project</button><br />
 		<textarea id="datacont" value=""></textarea>
 		<script>
 var screens = new Array(24*24);
@@ -1167,7 +1167,12 @@ function open(fileForUpload, output)
         var reader = new FileReader();
         reader.readAsText(file, "UTF-8");
         reader.onload = function (evt) {
-            output = evt.target.result;
+		var file = evt.target.result;
+		var fileContent = file.split(",");
+		for(var i = 0; i < fileContent.length; i++)
+		{
+			output[i] = fileContent[i];
+		}
         }
 	reader.onerror = function(evt) {
 		document.body.innerHTML = "error reading file";
@@ -1195,16 +1200,6 @@ function downloadProject()
 		else continue;
 	}
 	download(document.getElementById("name").value + ".prj", data);
-}
-function uploadProject()
-{
-	var file;
-	open(document.getElementById("proj"), file);
-	document.body.innerHTML = file;
-	for(var i = 0; i < fileContent.length; i++)
-	{
-		screen[i] = fileContent[i];
-	}
 }
 var anim = function()
 {
