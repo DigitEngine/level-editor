@@ -1199,8 +1199,8 @@ function downloadProject()
 function uploadProject()
 {
 	open(document.getElementById("proj"), document.getElementById("datacont"));
-	var file = document.getElementById("datacont");
-	var fileContent = file.innerHTML.split(',');
+	var file = document.getElementById("datacont").value;
+	document.body.innerHTML = file;
 	for(var i = 0; i < fileContent.length; i++)
 	{
 		screen[i] = fileContent[i];
