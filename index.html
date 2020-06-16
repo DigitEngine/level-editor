@@ -10,7 +10,8 @@
 		<button onclick="downloadScreen();">Download Test Screen</button>
 		<button onclick="downloadProject();">Download Project</button><br />
 		<input id="proj" type="file" />
-		<button onclick="uploadProject();">Upload Project</button>
+		<button onclick="uploadProject();">Upload Project</button><br />
+		<textarea id="datacont" value=""></textarea>
 		<script>
 var screens = new Array(24*24);
 
@@ -1197,12 +1198,8 @@ function downloadProject()
 }
 function uploadProject()
 {
-	var elem = document.createElement("textarea");
-	elem.setAttribute("id", "datacont");
-	document.body.appendChild(elem);
 	open(document.getElementById("proj"), document.getElementById("datacont"));
-	var file = elem.value;
-	document.body.removeChild(elem);
+	var file = document.getElementById("datacont").value;
 	var fileContent = file.split(',');
 	for(var i = 0; i < fileContent.length; i++)
 	{
