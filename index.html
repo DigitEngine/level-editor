@@ -10,7 +10,7 @@
 		<button onclick="downloadScreen();">Download Test Screen</button>
 		<button onclick="downloadProject();">Download Project</button><br />
 		<input id="proj" type="file" />
-		<button onclick="open(document.getElementById("proj"), screen);">Upload Project</button><br />
+		<button onclick="open(document.getElementById("proj"));">Upload Project</button><br />
 		<textarea id="datacont" value=""></textarea>
 		<script>
 var screens = new Array(24*24);
@@ -1160,7 +1160,7 @@ function download(filename, code)
 	
 	document.body.removeChild(a);
 }
-function open(fileForUpload, output)
+function open(fileForUpload)
 {
     var file = fileForUpload.files[0];
     if (file) {
@@ -1171,7 +1171,7 @@ function open(fileForUpload, output)
 		var fileContent = file.split(",");
 		for(var i = 0; i < fileContent.length; i++)
 		{
-			output[i] = fileContent[i];
+			screen[i] = fileContent[i];
 		}
         }
 	reader.onerror = function(evt) {
