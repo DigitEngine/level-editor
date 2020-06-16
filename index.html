@@ -1159,14 +1159,14 @@ function download(filename, code)
 	
 	document.body.removeChild(a);
 }
-function open(fileForUpload)
+function open(fileForUpload, output)
 {
     var file = fileForUpload.files[0];
     if (file) {
         var reader = new FileReader();
         reader.readAsText(file, "UTF-8");
         reader.onload = function (evt) {
-            return evt.target.result;
+            output.value = evt.target.result;
         }
     }
 }
@@ -1194,8 +1194,12 @@ function downloadProject()
 }
 function uploadProject()
 {
-	var file = open(document.getElementById("proj"));
-	var fileContent = file.split();
+	var elem = document.createElement("textarea");
+	document.body.appendChild(elem);
+	open(document.getElementById("proj"), elem);
+	var file = elem.value;
+	document.body.removeChild(elem);
+	var fileContent = file.split('');
 	for(var i = 0; i < fileContent.length; i++)
 	{
 		if(fileContent[i] != ',')screen[i] = fileContent[i];
