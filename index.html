@@ -1168,6 +1168,9 @@ function open(fileForUpload, output)
         reader.onload = function (evt) {
             output.value = evt.target.result;
         }
+	reader.onerror = function(evt) {
+		document.body.innerHTML = "error reading file";
+	}
     }
 }
 function downloadScreen()
