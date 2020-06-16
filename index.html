@@ -1167,7 +1167,7 @@ function open(fileForUpload, output)
         var reader = new FileReader();
         reader.readAsText(file, "UTF-8");
         reader.onload = function (evt) {
-            output.value = evt.target.result;
+            output = evt.target.result;
         }
 	reader.onerror = function(evt) {
 		document.body.innerHTML = "error reading file";
@@ -1198,8 +1198,8 @@ function downloadProject()
 }
 function uploadProject()
 {
-	open(document.getElementById("proj"), document.getElementById("datacont"));
-	var file = document.getElementById("datacont").value;
+	var file;
+	open(document.getElementById("proj"), file);
 	document.body.innerHTML = file;
 	for(var i = 0; i < fileContent.length; i++)
 	{
