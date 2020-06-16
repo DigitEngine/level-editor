@@ -1195,15 +1195,15 @@ function downloadProject()
 function uploadProject()
 {
 	var elem = document.createElement("textarea");
+	elem.setAttribute("id", "datacont");
 	document.body.appendChild(elem);
-	open(document.getElementById("proj"), elem);
+	open(document.getElementById("proj"), document.getElementById("datacont"));
 	var file = elem.value;
 	document.body.removeChild(elem);
-	var fileContent = file.split('');
+	var fileContent = file.split(',');
 	for(var i = 0; i < fileContent.length; i++)
 	{
-		if(fileContent[i] != ',')screen[i] = fileContent[i];
-		else continue;
+		screen[i] = fileContent[i];
 	}
 }
 var anim = function()
